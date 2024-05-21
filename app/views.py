@@ -183,7 +183,7 @@ def login_view(req):
             return JsonResponse({'error': str(e)}, status=500)
      
 @api_view(['GET'])
-def login_view(req):
+def hello_world(req):
      try:
             return JsonResponse({'MESSAGE': 'HELLO'}, status=200)
                
