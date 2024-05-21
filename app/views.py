@@ -181,6 +181,14 @@ def login_view(req):
                
      except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
+     
+@api_view(['GET'])
+def login_view(req):
+     try:
+            return JsonResponse({'MESSAGE': 'HELLO'}, status=200)
+               
+     except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)     
     
 
 
