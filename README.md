@@ -13,7 +13,7 @@ The Dynamic Quiz Generation App is a comprehensive platform that allows users to
 
 **Dynamic Quiz Generation**
 
-Gemini API Integration: Quizzes are created dynamically based on any topic or uploaded PDF. The Gemini API processes the input and generates relevant multiple-choice questions which is handled and processed to generate a quiz along with explanation.
+Gemini API Integration: Quizzes are created dynamically based on any topic or uploaded PDF. The Django backend processes the input and generates relevant multiple-choice questions which is handled and processed to generate a quiz along with explanation.
 Customization: Users can specify topics or upload documents to tailor the quizzes to their needs.
 
 **User Engagement**
