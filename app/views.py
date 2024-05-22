@@ -8,6 +8,7 @@ from PyPDF2 import PdfReader
 from rest_framework.authtoken.models import Token
 from .models import Quiz,User
 from django.core import serializers
+from django_ratelimit.decorators import ratelimit
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
@@ -34,6 +35,7 @@ def process_json_string(input_str):
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])  
 @permission_classes([IsAuthenticated])
+@ratelimit(key='ip', rate='5/1m') 
 def text_prompt(req):
     if req.method=='POST':
         try:
@@ -68,6 +70,7 @@ def extractText(fileName):
 @api_view(['POST'])    
 @authentication_classes([TokenAuthentication])  
 @permission_classes([IsAuthenticated])
+@ratelimit(key='ip', rate='5/1m') 
 def pdf_prompt(req):
     if req.FILES.get('pdf'):
         uploaded_file = req.FILES['pdf']
@@ -92,6 +95,7 @@ def pdf_prompt(req):
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])  
 @permission_classes([IsAuthenticated])
+@ratelimit(key='ip', rate='5/1m') 
 def submit_quiz(request):
         try:
             data = json.loads(request.body)
