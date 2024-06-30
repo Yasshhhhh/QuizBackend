@@ -41,8 +41,9 @@ def text_prompt(req):
         try:
             json_data=json.loads(req.body)
             prompt=json_data.get('topic')
+            difficulty=json_data.get('difficulty')
             # print(prompt)
-            instruction="10 mcqs on " + prompt + ".Format your answer as JSON string with question,unmarked options,answer and explanation"
+            instruction="10 "+ difficulty + " mcqs on " + prompt + ".Format your answer as JSON string with question,unmarked options,answer and explanation"
             print(instruction)
             response = model.generate_content(instruction)
             print(response.text)
@@ -76,6 +77,7 @@ def pdf_prompt(req):
         uploaded_file = req.FILES['pdf']
         print(uploaded_file)
         prompt= extractText(uploaded_file)
+        
         prompt[:30000]
         instruction="Read the following: "+prompt + " Ask 10 mcqs.Format your answer as JSON string with question,options,answer and explanation"
         print(instruction)

@@ -11,4 +11,7 @@ class Quiz(models.Model):
     def get_quiz_data(self):
         return json.loads(self.quiz_data)
 
-
+    class Meta:
+        indexes = [
+            models.Index(fields=['user']),
+        ]
